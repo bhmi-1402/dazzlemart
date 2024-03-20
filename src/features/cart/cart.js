@@ -11,6 +11,7 @@ import {
 
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
+import {Link} from 'react-router-dom'
 
 
 const products = [
@@ -48,8 +49,11 @@ export default function Cart() {
  
   return (
     <>
-        <div className="mx-auto bg-white max-w-4xl px-4  sm:px-6 lg:px-8">
+        <div className="mx-auto mt-6 bg-white max-w-4xl px-4  sm:px-6 lg:px-8">
+       
     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+    <h1 className="text-4xl my-2 font-bold tracking-tight text-gray-900">Cart</h1>
+
                         <div className="flow-root">
                           <ul role="list" className="-my-6 divide-y divide-gray-200">
                             {products.map((product) => (
@@ -73,7 +77,15 @@ export default function Cart() {
                                     <p className="mt-1 text-sm text-gray-500">{product.color}</p>
                                   </div>
                                   <div className="flex flex-1 items-end justify-between text-sm">
-                                    <p className="text-gray-500">Qty {product.quantity}</p>
+                                    <div className="text-gray-500">
+                                    <label htmlFor="quantity" className="inline mr-5 text-sm font-medium leading-6 text-gray-900">
+                  Qty
+                </label>
+                                    <select>
+                                      <option value="1">1</option>
+                                      <option value="1">2</option>
+                                      </select>
+                                      </div>
 
                                     <div className="flex">
                                       <button
@@ -98,17 +110,20 @@ export default function Cart() {
                         <p>$262.00</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
+                      
                       <div className="mt-6">
-                        <a
-                          href="#"
-                          className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                        >
-                          Checkout
-                        </a>
+                           <Link
+                             to="/checkout"
+                             className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                           >
+                             Checkout
+                           </Link>
+                         
                       </div>
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>
-                          or{' '}
+                          or
+                          <Link to ="/">
                           <button
                             type="button"
                             className="font-medium text-indigo-600 hover:text-indigo-500"
@@ -117,6 +132,7 @@ export default function Cart() {
                             Continue Shopping
                             <span aria-hidden="true"> &rarr;</span>
                           </button>
+                          </Link>
                         </p>
                       </div>
                     </div>
